@@ -10,7 +10,7 @@ afterAll(async () => {
   await prisma.$disconnect()
 })
 
-describe('SignUp Controller', () => {
+describe('SignUp Tests', () => {
   it('Should return 422 if no email is provided', async () => {
     const body = {
       password: 'any_password',
@@ -33,6 +33,16 @@ describe('SignUp Controller', () => {
     const body = {
       email: 'any_email@mail.com',
       password: 'any_password'
+    }
+
+    const response = await supertest(app).post('/sign-up').send(body)
+    expect(response.status).toBe(422)
+  })
+  it('Should return 400 if password confirmation fails', async () => {
+    const body = {
+      email: 'any_email@mail.com',
+      password: 'any_password',
+      passwordConfirmation: 'invalid_password'
     }
 
     const response = await supertest(app).post('/sign-up').send(body)

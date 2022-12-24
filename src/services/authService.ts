@@ -10,7 +10,7 @@ dotenv.config()
 export async function createUser (userData: AuthBody) {
   const encryptedPassword = bcrypt.hashSync(userData.password, 10)
   const user: User | null = await authRepository.findByEmail(userData.email)
-  if (userData.confirmPassword !== userData.password) throw { type: 'unauthorized', message: 'The confirmation password is incorrect' }
+  if (userData.confirmPassword !== userData.password) throw { type: 'bad_request', message: 'The confirmation password is incorrect' }
   if (user) throw { type: 'conflict', message: 'This user already exists' }
   await authRepository.insert({
     email: userData.email,
