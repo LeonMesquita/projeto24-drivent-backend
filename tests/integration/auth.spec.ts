@@ -14,7 +14,7 @@ describe('SignUp Tests', () => {
   it('Should return 422 if no email is provided', async () => {
     const body = {
       password: 'any_password',
-      passwordConfirmation: 'any_password'
+      confirmPassword: 'any_password'
     }
 
     const response = await supertest(app).post('/sign-up').send(body)
@@ -23,7 +23,7 @@ describe('SignUp Tests', () => {
   it('Should return 422 if no password is provided', async () => {
     const body = {
       email: 'any_email@mail.com',
-      passwordConfirmation: 'any_password'
+      confirmPassword: 'any_password'
     }
 
     const response = await supertest(app).post('/sign-up').send(body)
@@ -42,11 +42,21 @@ describe('SignUp Tests', () => {
     const body = {
       email: 'any_email@mail.com',
       password: 'any_password',
-      passwordConfirmation: 'invalid_password'
+      confirmPassword: 'invalid_password'
     }
 
     const response = await supertest(app).post('/sign-up').send(body)
-    expect(response.status).toBe(422)
+    expect(response.status).toBe(400)
+  })
+  it('Should return 201 if signup is successful', async () => {
+    const body = {
+      email: 'any_email@mail.com',
+      password: 'any_password',
+      confirmPassword: 'any_password'
+    }
+
+    const response = await supertest(app).post('/sign-up').send(body)
+    expect(response.status).toBe(201)
   })
 })
 
