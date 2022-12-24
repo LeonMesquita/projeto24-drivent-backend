@@ -20,6 +20,24 @@ describe('SignUp Controller', () => {
     const response = await supertest(app).post('/sign-up').send(body)
     expect(response.status).toBe(422)
   })
+  it('Should return 422 if no password is provided', async () => {
+    const body = {
+      email: 'any_email@mail.com',
+      passwordConfirmation: 'any_password'
+    }
+
+    const response = await supertest(app).post('/sign-up').send(body)
+    expect(response.status).toBe(422)
+  })
+  it('Should return 422 if no password confirmation is provided', async () => {
+    const body = {
+      email: 'any_email@mail.com',
+      password: 'any_password'
+    }
+
+    const response = await supertest(app).post('/sign-up').send(body)
+    expect(response.status).toBe(422)
+  })
 })
 
 // const body = {
