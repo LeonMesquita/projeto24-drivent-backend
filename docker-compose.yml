@@ -1,0 +1,26 @@
+services:
+  drivent_db:
+    image: postgres
+    container_name: drivent_db
+    restart: always
+    ports:
+      - 2345:5432
+    volumes:
+      - drivent_db:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+
+  node_drivent:
+    container_name: node_drivent
+    build: .
+    ports:
+      - 5000:5000
+    depends_on:
+      - drivent_db
+    env_file:
+      - .env
+
+
+volumes:
+  drivent_db:

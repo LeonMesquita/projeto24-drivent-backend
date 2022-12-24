@@ -1,0 +1,21 @@
+services:
+  drivent_db_tests:
+    image: postgres
+    container_name: drivent_db_tests
+    restart: always
+    ports:
+      - 2345:5432
+
+    env_file:
+      - .env.test
+
+
+  node_drivent:
+    container_name: node_drivent
+    build: .
+    ports:
+      - 5000:5000
+    depends_on:
+      - drivent_db_tests
+    env_file:
+      - .env.test
