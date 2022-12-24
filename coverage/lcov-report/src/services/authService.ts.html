@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">58.33% </span>
+                <span class="strong">95.83% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/24</span>
+                <span class='fraction'>23/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/8</span>
+                <span class='fraction'>6/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/20</span>
+                <span class='fraction'>20/20</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -102,24 +102,24 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { AuthBody, AuthData } from '../interfaces/authInterface'
 import * as authRepository from '../repositories/authRepository'
@@ -141,14 +141,14 @@ export async function createUser (userData: AuthBody) {
   })
 }
 &nbsp;
-export async function <span class="fstat-no" title="function not covered" >loginUser </span>(userData: AuthData) {
-  const user: User | null = <span class="cstat-no" title="statement not covered" >await authRepository.findByEmail(userData.email)</span>
-<span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>if (!user) <span class="cstat-no" title="statement not covered" >throw incorrectEmailError</span></span>
-  const validatePassword = <span class="cstat-no" title="statement not covered" >bcrypt.compareSync(userData.password, user.password)</span>
-<span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>if (!validatePassword) <span class="cstat-no" title="statement not covered" >throw incorrectEmailError</span></span>
-  const secretKey: string = <span class="cstat-no" title="statement not covered" >process.env.JWT_SECRET ?? 'secret'</span>
-  const token = <span class="cstat-no" title="statement not covered" >jwt.sign(user.id.toString(), secretKey)</span>
-<span class="cstat-no" title="statement not covered" >  return token</span>
+export async function loginUser (userData: AuthData) {
+  const user: User | null = await authRepository.findByEmail(userData.email)
+  if (!user) throw incorrectEmailError
+  const validatePassword = bcrypt.compareSync(userData.password, user.password)
+  if (!validatePassword) throw incorrectEmailError
+  const secretKey: string = process.env.JWT_SECRET<span class="branch-0 cbranch-no" title="branch not covered" > ?? '</span>secret'
+  const token = jwt.sign(user.id.toString(), secretKey)
+  return token
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -157,7 +157,7 @@ export async function <span class="fstat-no" title="function not covered" >login
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-12-24T20:58:40.581Z
+                at 2022-12-24T21:25:53.932Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
