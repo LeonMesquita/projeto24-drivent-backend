@@ -9,7 +9,7 @@
     "prisma:deploy": "prisma migrate deploy",
     "prisma:seed": "prisma db seed",
     "test": "dotenv -e .env.test cross-env NODE_OPTIONS=--experimental-vm-modules jest -- -i",
-    "test:integration": "dotenv -e .env.test jest -- -i --coverage --testPathPattern=tests/integration",
+    "test:integration": "dotenv -e .env.test prisma migrate dev && dotenv -e .env.test jest -- -i --coverage --testPathPattern=tests/integration",
     "test:unit": "dotenv -e .env.test jest -- -i --coverage --testPathPattern=tests/unit",
     "dev": "nodemon src/server.ts",
     "start": "npm run prisma:deploy && node dist/src/server.js"
