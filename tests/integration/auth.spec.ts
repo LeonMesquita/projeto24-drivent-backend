@@ -4,7 +4,7 @@ import app from '../../src/index'
 import { signupFactory } from '../factories/auth-factory'
 
 beforeEach(async () => {
-  await prisma.$executeRaw`TRUNCATE TABLE users RESTART IDENTITY`
+  await prisma.$executeRaw`TRUNCATE TABLE  users RESTART IDENTITY CASCADE`
 })
 
 afterAll(async () => {
