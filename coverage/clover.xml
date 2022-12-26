@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1671917153953" clover="3.2.0">
-  <project timestamp="1671917153953" name="All files">
-    <metrics statements="91" coveredstatements="89" conditionals="16" coveredconditionals="12" methods="12" coveredmethods="10" elements="119" coveredelements="111" complexity="0" loc="91" ncloc="91" packages="9" files="11" classes="11"/>
+<coverage generated="1672091743622" clover="3.2.0">
+  <project timestamp="1672091743622" name="All files">
+    <metrics statements="103" coveredstatements="99" conditionals="16" coveredconditionals="12" methods="14" coveredmethods="10" elements="133" coveredelements="121" complexity="0" loc="103" ncloc="103" packages="9" files="14" classes="14"/>
     <package name="src">
       <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="/home/leonardo/Desktop/driven/Arquitetura/projeto24-drivent/back-end/src/index.ts">
@@ -32,7 +32,7 @@
       </file>
     </package>
     <package name="src.controllers">
-      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="11" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
       <file name="authController.ts" path="/home/leonardo/Desktop/driven/Arquitetura/projeto24-drivent/back-end/src/controllers/authController.ts">
         <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
@@ -42,6 +42,13 @@
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="3" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
+      </file>
+      <file name="subscription-controller.ts" path="/home/leonardo/Desktop/driven/Arquitetura/projeto24-drivent/back-end/src/controllers/subscription-controller.ts">
+        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.errors">
@@ -97,7 +104,7 @@
       </file>
     </package>
     <package name="src.routers">
-      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="20" coveredstatements="20" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="authRouter.ts" path="/home/leonardo/Desktop/driven/Arquitetura/projeto24-drivent/back-end/src/routers/authRouter.ts">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -110,6 +117,16 @@
         <line num="11" count="1" type="stmt"/>
       </file>
       <file name="routes.ts" path="/home/leonardo/Desktop/driven/Arquitetura/projeto24-drivent/back-end/src/routers/routes.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+      </file>
+      <file name="subscription-router.ts" path="/home/leonardo/Desktop/driven/Arquitetura/projeto24-drivent/back-end/src/routers/subscription-router.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -128,7 +145,7 @@
       </file>
     </package>
     <package name="src.services">
-      <metrics statements="20" coveredstatements="20" conditionals="8" coveredconditionals="6" methods="2" coveredmethods="2"/>
+      <metrics statements="21" coveredstatements="21" conditionals="8" coveredconditionals="6" methods="3" coveredmethods="2"/>
       <file name="authService.ts" path="/home/leonardo/Desktop/driven/Arquitetura/projeto24-drivent/back-end/src/services/authService.ts">
         <metrics statements="20" coveredstatements="20" conditionals="8" coveredconditionals="6" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
@@ -151,6 +168,10 @@
         <line num="26" count="1" type="cond" truecount="3" falsecount="1"/>
         <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
+      </file>
+      <file name="subscription-service.ts" path="/home/leonardo/Desktop/driven/Arquitetura/projeto24-drivent/back-end/src/services/subscription-service.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
       </file>
     </package>
   </project>
