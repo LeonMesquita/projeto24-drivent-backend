@@ -1,8 +1,11 @@
 import { Router } from 'express'
+import validateSchema from '../middlewares/validateSchema'
+import validateToken from '../middlewares/validateToken'
+import userDataSchema from '../schemas/user-data-schema'
 import * as subscriptionController from '../controllers/subscription-controller'
 
 const subscriptionRouter = Router()
 
-subscriptionRouter.post('/subscriptions', subscriptionController.subscriptEvent)
+subscriptionRouter.post('/subscriptions', validateToken, validateSchema(userDataSchema), subscriptionController.subscriptEvent)
 
 export default subscriptionRouter

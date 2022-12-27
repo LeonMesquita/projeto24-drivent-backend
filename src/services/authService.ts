@@ -1,5 +1,5 @@
-import { AuthBody, AuthData } from '../interfaces/authInterface'
-import * as authRepository from '../repositories/authRepository'
+import { AuthBody, AuthData } from '../interfaces/user-interface'
+import * as authRepository from '../repositories/auth-repository'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'

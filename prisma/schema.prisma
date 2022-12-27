@@ -28,26 +28,20 @@ model Address {
   id           Int     @id @default(autoincrement())
   postal_code String
   number Int
+  street String
+  district String
+  city String
+  state String
   complement String ?
-  user_id Int?
-  street_id Int?
-  district_id Int?
-  city_id Int?
-  state_id Int?
-  
-  streets Street? @relation(fields: [street_id], references: [id])
-  cities City? @relation(fields: [city_id], references: [id])
-  states State? @relation(fields: [state_id], references: [id])
-  districts District? @relation(fields: [district_id], references: [id])
-  users User? @relation(fields: [user_id], references: [id])
+  user_id Int
+  user User? @relation(fields: [user_id], references: [id])
   @@map("addresses")
 }
 
 
 model PhoneNumber {
   id           Int     @id @default(autoincrement())
-  ddd Int
-  number Int
+  number String
   user_id Int?
   users User? @relation(fields: [user_id], references: [id])
   @@map("phone_numbers")
@@ -58,10 +52,9 @@ model Subscription {
   id           Int     @id @default(autoincrement())
   user_id Int?
   users User? @relation(fields: [user_id], references: [id])
+  created_at DateTime @default(now())
   @@map("subscriptions")
 }
-
-
 
 
 
@@ -79,28 +72,24 @@ model Subscription {
 model Street {
   id           Int     @id @default(autoincrement())
   name         String
-  address Address[]
   @@map("streets")
 }
 
 model District {
   id           Int     @id @default(autoincrement())
   name         String @unique
-  address Address[]
   @@map("districts")
 }
 
 model State {
   id           Int     @id @default(autoincrement())
   name         String @unique
-  address Address[]
   @@map("states")
 }
 
 model City {
   id           Int     @id @default(autoincrement())
   name         String @unique
-  address Address[]
   @@map("cities")
 }
 
