@@ -18,3 +18,8 @@ export async function addSubscription (userData: UserInformations, userId: numbe
   await subscriptionRepository.updateUserData(userId, userData.name, userData.birth_date, userData.cpf)
   await subscriptionRepository.createSubscription(userId)
 }
+
+export async function getUserData (userId: number) {
+  const userData = await subscriptionRepository.getUserData(userId)
+  return userData
+}
