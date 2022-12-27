@@ -66,3 +66,16 @@ export async function updateUserData (id: number, name: string, birth_date: stri
 export async function createSubscription (user_id: number) {
   await prisma.subscription.create({ data: { user_id } })
 }
+
+export async function getUserData (userId: number) {
+  const userData = await prisma.$queryRaw`
+   SELECT u.*, p.number as phone_number, json_build_object('id', a.id, 'postal_code', a.postal_code, 'city', a.city,
+   'state', a.state, 'district', a.district, 'number', a.number, 'street', a.street) as address FROM users u
+   JOIN phone_numbers p
+   ON p.user_id = u.id
+   JOIN addresses a
+   ON a.user_id = u.id
+   WHERE u.id = ${userId}
+  `
+  return userData
+}
