@@ -1,5 +1,5 @@
 import prisma from '../config/postgres'
-import { AuthData } from '../interfaces/authInterface'
+import { AuthData } from '../interfaces/user-interface'
 import { User } from '@prisma/client'
 
 export async function insert (authData: AuthData) {
@@ -12,6 +12,6 @@ export async function findByEmail (email: string) {
 }
 
 export async function findById (id: number) {
-  // const user = await prisma.users.findUnique({where: {id}});
-  // return user;
+  const user = await prisma.user.findUnique({ where: { id } })
+  return user
 }

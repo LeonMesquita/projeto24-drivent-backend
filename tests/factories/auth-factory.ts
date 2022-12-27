@@ -1,6 +1,6 @@
 import supertest from 'supertest'
 import app from '../../src/index'
-import { AuthBody, AuthData } from '../../src/interfaces/authInterface'
+import { AuthBody, AuthData } from '../../src/interfaces/user-interface'
 
 export async function signupFactory (): Promise<AuthData> {
   const body: AuthBody = {
