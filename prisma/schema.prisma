@@ -20,6 +20,8 @@ model User {
   address Address[]
   phone_numbers PhoneNumber[]
   subscriptions Subscription[]
+  payments Payment[]
+  credit_cards CreditCard[]
   @@map("users")
 }
 
@@ -57,18 +59,6 @@ model Subscription {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 model Street {
   id           Int     @id @default(autoincrement())
   name         String
@@ -94,5 +84,50 @@ model City {
 }
 
 
+model CreditCard {
+  id           Int     @id @default(autoincrement())
+  name String
+  number Float
+  expiration_date DateTime
+  cvc Int
+  total_credits Float
+  used_credits Float @default(0)
+  user_id Int
+  user User @relation(fields: [user_id], references: [id])
+}
 
 
+model Payment {
+  id           Int     @id @default(autoincrement())
+  user_id Int
+  modality_id Int
+  hosting_id Int?
+  price Float
+  user User @relation(fields: [user_id], references: [id])
+  modality Modality @relation(fields: [modality_id], references: [id])
+  hosting Hosting? @relation(fields: [hosting_id], references: [id])
+  created_at DateTime @default(now())
+  
+  @@map("payments")
+}
+
+
+model Modality {
+  id           Int     @id @default(autoincrement())
+  name String @unique
+  price Float
+  payments Payment[]
+
+  @@map("modalities")
+}
+
+
+
+model Hosting {
+  id           Int     @id @default(autoincrement())
+  name String @unique
+  price Float
+  payments Payment[]
+
+  @@map("hostings")
+}
