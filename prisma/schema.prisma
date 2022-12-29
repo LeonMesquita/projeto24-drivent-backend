@@ -52,8 +52,11 @@ model PhoneNumber {
 
 model Subscription {
   id           Int     @id @default(autoincrement())
-  user_id Int?
-  users User? @relation(fields: [user_id], references: [id])
+  user_id Int @unique
+  payment_id Int? @unique
+  event_open Boolean? @default(true)
+  user User @relation(fields: [user_id], references: [id])
+  payment Payment? @relation(fields: [payment_id], references: [id])
   created_at DateTime @default(now())
   @@map("subscriptions")
 }
@@ -87,13 +90,14 @@ model City {
 model CreditCard {
   id           Int     @id @default(autoincrement())
   name String
-  number Float
-  expiration_date DateTime
-  cvc Int
-  total_credits Float
-  used_credits Float @default(0)
+  number String @unique
+  expiration_date String
+  cvc String
+  total_credits Float? @default(1000)
+  used_credits Float? @default(0)
   user_id Int
   user User @relation(fields: [user_id], references: [id])
+  @@map("credit_cards")
 }
 
 
@@ -106,7 +110,8 @@ model Payment {
   user User @relation(fields: [user_id], references: [id])
   modality Modality @relation(fields: [modality_id], references: [id])
   hosting Hosting? @relation(fields: [hosting_id], references: [id])
-  created_at DateTime @default(now())
+  created_at DateTime? @default(now())
+  subscription Subscription?
   
   @@map("payments")
 }

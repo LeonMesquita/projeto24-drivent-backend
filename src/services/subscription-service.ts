@@ -1,6 +1,7 @@
 import { UserInformations } from '../interfaces/user-interface'
 import * as subscriptionRepository from '../repositories/subscription-repository'
 import { AddressData } from '../repositories/subscription-repository'
+
 export async function addSubscription (userData: UserInformations, userId: number) {
   const addressData: AddressData = {
     number: userData.number,
@@ -22,4 +23,8 @@ export async function addSubscription (userData: UserInformations, userId: numbe
 export async function getUserData (userId: number) {
   const userData = await subscriptionRepository.getUserData(userId)
   return userData
+}
+
+export async function getSubscription (userId: number) {
+  return await subscriptionRepository.getSubscription(userId)
 }
