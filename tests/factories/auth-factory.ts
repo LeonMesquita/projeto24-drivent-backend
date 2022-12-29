@@ -14,3 +14,9 @@ export async function signupFactory (): Promise<AuthData> {
     password: body.password
   })
 }
+
+export async function signinFactory () {
+  const body = await signupFactory()
+  const response = await supertest(app).post('/sign-in').send(body)
+  return response.body.token
+}
