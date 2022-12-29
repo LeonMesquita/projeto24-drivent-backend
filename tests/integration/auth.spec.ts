@@ -12,32 +12,32 @@ afterAll(async () => {
 })
 
 describe('SignUp Tests', () => {
-  it('Should return 422 if no email is provided', async () => {
+  it('Should return 400 if no email is provided', async () => {
     const body = {
       password: 'any_password',
       confirmPassword: 'any_password'
     }
 
     const response = await supertest(app).post('/sign-up').send(body)
-    expect(response.status).toBe(422)
+    expect(response.status).toBe(400)
   })
-  it('Should return 422 if no password is provided', async () => {
+  it('Should return 400 if no password is provided', async () => {
     const body = {
       email: 'any_email@mail.com',
       confirmPassword: 'any_password'
     }
 
     const response = await supertest(app).post('/sign-up').send(body)
-    expect(response.status).toBe(422)
+    expect(response.status).toBe(400)
   })
-  it('Should return 422 if no password confirmation is provided', async () => {
+  it('Should return 400 if no password confirmation is provided', async () => {
     const body = {
       email: 'any_email@mail.com',
       password: 'any_password'
     }
 
     const response = await supertest(app).post('/sign-up').send(body)
-    expect(response.status).toBe(422)
+    expect(response.status).toBe(400)
   })
   it('Should return 400 if password confirmation fails', async () => {
     const body = {
@@ -62,23 +62,23 @@ describe('SignUp Tests', () => {
 })
 
 describe('SignIn Tests', () => {
-  it('Should return 422 if no email is provided', async () => {
+  it('Should return 400 if no email is provided', async () => {
     const body = {
       password: 'any_password',
       confirmPassword: 'any_password'
     }
 
     const response = await supertest(app).post('/sign-up').send(body)
-    expect(response.status).toBe(422)
+    expect(response.status).toBe(400)
   })
-  it('Should return 422 if no password is provided', async () => {
+  it('Should return 400 if no password is provided', async () => {
     const body = {
       email: 'any_email@mail.com',
       confirmPassword: 'any_password'
     }
 
     const response = await supertest(app).post('/sign-up').send(body)
-    expect(response.status).toBe(422)
+    expect(response.status).toBe(400)
   })
   it('Should return 401 email is incorrect', async () => {
     const body = await signupFactory()

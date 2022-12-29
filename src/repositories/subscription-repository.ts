@@ -67,6 +67,20 @@ export async function createSubscription (user_id: number) {
   await prisma.subscription.create({ data: { user_id } })
 }
 
+export async function updateSubscription (user_id: number, payment_id: number) {
+  console.log(payment_id)
+  return await prisma.subscription.update({
+    where: {
+      user_id
+    },
+    data: { payment_id }
+  })
+}
+
+export async function getSubscriptionByUserId (user_id: number) {
+  return await prisma.subscription.findUnique({ where: { user_id } })
+}
+
 export async function getUserData (userId: number) {
   const userData = await prisma.$queryRaw`
    SELECT u.*, p.number as phone_number, json_build_object('id', a.id, 'postal_code', a.postal_code, 'city', a.city,
@@ -78,4 +92,8 @@ export async function getUserData (userId: number) {
    WHERE u.id = ${userId}
   `
   return userData
+}
+
+export async function getSubscription (user_id: number) {
+  return await prisma.subscription.findUnique({ where: { user_id } })
 }

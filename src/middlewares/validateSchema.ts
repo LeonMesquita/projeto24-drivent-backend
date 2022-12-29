@@ -12,7 +12,7 @@ const validateSchema = (schema: Schema) => {
         const message = details.message.split(' ').splice(1).join(' ')
         return { [error]: message }
       })
-      return res.status(422).send(errors)
+      return res.status(400).send(errors)
     };
     next()
   }
